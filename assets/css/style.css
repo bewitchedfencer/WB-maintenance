@@ -1,5 +1,22 @@
+/* top left of the nav bar */
 .logo{
     height:50px;
     width: 40px;
     margin-top:-15px;
+}
+/* title on the navbar */
+.page-title{
+margin-top: 15px;
+color: black;
+}
+
+.sort-by{
+    color: black;
+    margin-top: 20px;
+    font-family: 'News Cycle', sans-serif;
+    font-weight:700;
+}
+
+.myTable{
+    margin-top:100px;
 }
