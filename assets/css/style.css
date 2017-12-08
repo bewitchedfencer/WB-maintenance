@@ -20,3 +20,27 @@ color: black;
 .myTable{
     margin-top:100px;
 }
+
+#add-maintenance{
+    margin-top: 18px;
+    color:black;
+}
+
+.mInput{
+    margin:5px;
+    border-radius:5%;
+    width:80%;
+    
+}
+
+#description{
+    height:120px;
+}
+
+#all-sites{
+    width:80%;
+}
+
+#allCatsMaintenance{
+    width:80%;
+}
