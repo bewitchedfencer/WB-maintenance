@@ -13,6 +13,7 @@
 var database = firebase.database();
 
 $("#submit-button").on("click", function(event){
+    //add a timestamp to each item addedd
     event.preventDefault();
     var address = $("#address").val().trim();
     var mainCat = $("#allCatsMaintenance").val().trim();
@@ -53,33 +54,23 @@ $("#submit-button").on("click", function(event){
     
 });
 
-//startover from here with converting the train home to the maintenance website
+//whenever a new maintenance item is added, the new information is stored in these variables.
 database.ref().on("child_added", function(childSnapshot, prevChildKey){
     var newChild = childSnapshot.val();
-    var trainName = newChild.name;
-    var trainDestination = newChild.destination;
-    var trainStart = newChild.start;
-    var trainFrequency = newChild.frequency;
-    console.log(trainName);
-    console.log(trainDestination);
-    console.log(trainStart);
-    console.log(trainFrequency);
-
-
-    //need to figure out the format for the time instead of date
-    //check out moment.js docs for the information
-    //try to use unix if it can be used to do formulas with time
-    var timeFormat="H HH";
-    var frequencyFormat="m mm";
-    var convertedTime=moment(trainStart, timeFormat);
-    var convertedFrequency = (trainFrequency, frequencyFormat);
-
-    // var totalMonths = (moment(convertedTime).diff(moment(), "months"))*(-1);
+    var newAddress = newChild.address;
+    var newMainCat = newChild.maintenanceCategory;
+    var newSite = newChild.site;
+    var newDescription = newChild.description;
+    var newTenant = newChild.tenantContact.name;
+    var newContact = newChild.tenantContact.phoneEmail;
+    console.log("address", newAddress);
+    console.log("maintenance category", newMainCat);
+    console.log("newSite", newSite);
+    console.log("description", newDescription);
+    console.log("tenant name", newTenant);
+    console.log("phone or email", newContact);
     
-    // var nextTrain = 
-
-console.log(convertedTime);
-    
-    $("#trainTimes").append(`<tr><td>${trainName}</td><td>${trainDestination}</td><td>${trainStart}</td><td>${trainFrequency}</td></tr>`);
+    //fix this appending to finish the edits of the train times activity
+    $("#maintenanceItems").append(`<tr><td>${trainName}</td><td>${trainDestination}</td><td>${trainStart}</td><td>${trainFrequency}</td></tr>`);
 
 });
