@@ -1,4 +1,17 @@
 //first the user lands on the webpage and the document loads the DOM
+//initialize firebase
+
+var config = {
+    apiKey: "AIzaSyAuB-jzrX4AGRIL5BAsfId5-_dyu7Tut2I",
+    authDomain: "wb-maintenance.firebaseapp.com",
+    databaseURL: "https://wb-maintenance.firebaseio.com",
+    projectId: "wb-maintenance",
+    storageBucket: "wb-maintenance.appspot.com",
+    messagingSenderId: "976828334545"
+  };
+  firebase.initializeApp(config);
+
+const auth = firebase.auth();
 
 $(document).ready(function(){
     //console logs ready!
@@ -17,7 +30,7 @@ $(document).ready(function(){
             </div>
             <div class="text-center">
             <button type="submit" class="btn btn-inverse logins" id="loginSubmit">Login</button>
-            <button type="submit" class="btn btn-inverse logins" id="loginReset">Reset Password</button>
+            <button type="submit" class="btn btn-inverse logins" id="logout">Logout</button>
             </div>
           </form>
     </div>
@@ -26,30 +39,23 @@ $(document).ready(function(){
     $("body").css("background-color", "#9FB27A");    
 });
 
-//grab the variables input by the user
-var username = $("#email").val();
-var password = $("#password").val();
-
-//initialize firebase
-
-var config = {
-    apiKey: "AIzaSyAuB-jzrX4AGRIL5BAsfId5-_dyu7Tut2I",
-    authDomain: "wb-maintenance.firebaseapp.com",
-    databaseURL: "https://wb-maintenance.firebaseio.com",
-    projectId: "wb-maintenance",
-    storageBucket: "wb-maintenance.appspot.com",
-    messagingSenderId: "976828334545"
-  };
-  firebase.initializeApp(config);
-
-const auth = firebase.auth();
+var email = "";
+var password = "";
 
 //when the login button is clicked
-$("#loginSubmit").on("click", function(event){
+function loginPushed(event){
+    //grab the variables input by the user
+    email = $("#email").val();
+    password = $("#password").val();
     event.preventDefault();
-    $("#email").empty();
-    $("#password").empty();
-auth.signInWithEmailAndPassword(username, password).catch(function(error){
+    console.log("logged in clicked");
+    console.log("email", email);
+    console.log("password", password);
+    $("#email").val("");
+    $("#password").val("");
+auth.signInWithEmailAndPassword(email, password).then(function(){
+    console.log("logged in");    
+}).catch(function(error){
     var errorCode = error.code;
     var errorMessage = error.message;
     if (errorCode === 'auth/wrong-password') {
@@ -59,6 +65,16 @@ auth.signInWithEmailAndPassword(username, password).catch(function(error){
       }
       console.log(error);
     });
-    console.log("logged in");
+}
 
-});
+function logOut(event){
+    event.preventDefault();
+    auth.signOut().then(function(){
+        console.log("logged out");
+    }).catch(function(error){
+        console.log("an error occurred ", error);
+    });
+};
+
+$(document).on("click", "#loginSubmit", loginPushed);
+$(document).on("click", "#logout", logOut);

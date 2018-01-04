@@ -25,3 +25,11 @@
 #loginSubmit{
     margin-right:15px;
 }
+
+/* After being logged out, the users will see a message with these styles */
+#goodbye{
+    margin-top: 25%;
+    color:black;
+    font-size:110%;
+    font-weight:bolder;
+}
