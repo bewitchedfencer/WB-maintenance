@@ -155,7 +155,49 @@ auth.onAuthStateChanged(function(user){
         console.log("logged in to maintenance site");
     }
     else{
+        $(".navbar").css("display", "none");
         $("#whereItHappens").empty().html(`<p class="text-center" id="goodbye">Thank you for using Wise Brothers, Inc maintenance program.`);
     }
 });
+
+const database = firebase.database();
+    var status = "sent";
+    var priority = "";
+    var address = "";
+    var mainCat = "";
+    var site = "";
+    var description = "";
+    var tenant ={};
+
+function submitMaintenance(event);
+    event.preventDefault();
+    var address = $("#address").val().trim();
+    var mainCat = $("#allCatsMaintenance").val().trim();
+    var site = $("#all-sites").val().trim();
+    var description = $("#description").val().trim();
+    var tenant = {
+        name:$("#name").val().trim(),
+        phoneEmail:$("#contact").val().trim()
+    }
+
+    var newMaintenance ={
+        address: address,
+        status: status,
+        priority: priority,
+        maintenanceCategory:mainCat,
+        site:site,
+        description:description,
+        tenantContact:tenant
+    };
+
+    database.ref().push(newMaintenance);
+
+    console.log(newMaintenance.address);
+    console.log(newMaintenance.maintenanceCategory);
+    console.log(newMaintenance.site);
+    console.log(newMaintenance.description);
+    console.log(newMaintenance.tenantContact.name);
+    console.log(newMaintenance.tenantContact.phoneEmail);
+
+    $(document).on("click", "#submit-button", submitMaintenance);
 

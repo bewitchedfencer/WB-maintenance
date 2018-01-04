@@ -10,7 +10,7 @@
 
   firebase.initializeApp(config);
 
-var database = firebase.database();
+const database = firebase.database();
 
 $("#submit-button").on("click", function(event){
     //add a timestamp to each item addedd
