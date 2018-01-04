@@ -179,7 +179,7 @@ function submitMaintenance(event){
         name:$("#name").val().trim(),
         phoneEmail:$("#contact").val().trim()
     }
-
+};
     var newMaintenance ={
         address: address,
         status: status,
