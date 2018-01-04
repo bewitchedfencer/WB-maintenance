@@ -30,7 +30,7 @@ $(document).ready(function(){
             </div>
             <div class="text-center">
             <button type="submit" class="btn btn-inverse logins" id="loginSubmit">Login</button>
-            <button type="submit" class="btn btn-inverse logins" id="logout">Logout</button>
+            <button type="submit" class="btn btn-inverse logins" id="passwordReset">Forgot Password?</button>
             </div>
           </form>
     </div>

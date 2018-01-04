@@ -18,6 +18,7 @@
 .logins{
     padding:10px;
     margin-top:10px;
+
 }
 
 /*adding space between buttons on login page*/
@@ -33,3 +34,64 @@
     font-size:110%;
     font-weight:bolder;
 }
+
+/* top left of the nav bar */
+.logo{
+    height:50px;
+    width: 40px;
+    margin-top:-15px;
+}
+/* title on the navbar */
+.page-title{
+margin-top: 15px;
+color: black;
+}
+
+.sort-by{
+    color: black;
+    margin-top: 20px;
+    font-family: 'News Cycle', sans-serif;
+    font-weight:700;
+}
+
+.myTable{
+    margin-top:100px;
+    color:black;
+}
+
+#add-maintenance{
+    margin-top: 20px;
+    color:black;
+}
+
+.mInput{
+    margin:5px;
+    border-radius:5%;
+    width:80%;
+    
+}
+
+#description{
+    height:120px;
+}
+
+#all-sites{
+    width:80%;
+    margin:5px;
+}
+
+#allCatsMaintenance{
+    width:80%;
+    margin:5px;
+    
+}
+
+#logout{
+color:black;
+}
+
+#logout:hover{
+    cursor:pointer;
+    cursor:hand; 
+}
+
