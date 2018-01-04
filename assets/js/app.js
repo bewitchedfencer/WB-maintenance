@@ -169,7 +169,7 @@ const database = firebase.database();
     var description = "";
     var tenant ={};
 
-function submitMaintenance(event);
+function submitMaintenance(event){
     event.preventDefault();
     var address = $("#address").val().trim();
     var mainCat = $("#allCatsMaintenance").val().trim();
